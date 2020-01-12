@@ -1,0 +1,395 @@
+#+title: Big Data Exam Notes 2020
+* Key Points/Subjects
+** Week 1 Intro
+*** Where does Big Data Come From?
+**** Machine Generated Data
+**** People
+     - Social Media
+     - Email
+     - Blogs
+     Most people data is unstructured therefore tools must be used to provide
+     structure.
+**** Organisational
+     Usually stored in DB's, therefore sturctured. Often siloed, which means
+     lack of policy to be shared.
+*** Definition of Big Data
+    Big data is data that contains greater variety arriving in increading volumes
+    and with ever-higher velocity. This is known as the "three V's".
+    - Volume
+    - Velocity
+    - Variety
+*** The Charicteristics of Big Data/The 4 V's
+**** Volume
+     Refers to the vast amounts of data that is generated.
+**** Variety
+     Refers to the ever increasing different forms that data can come in
+     such as text, images, audio and geospatial.
+**** Velocity
+     Refers to the speed at which data is being generated and the increasing speed
+     at which the data needs to be stored and analysed.
+**** Veracity
+     Refers to the quality of the data, i.e biases, noise and abnormality. Data is
+     of no value if it is not accurate.
+*** Steps of the Data Science Process?
+**** Aquire
+     Discover what data is available and find the right data source.
+**** Prepare
+     Explore the data as a part of the preperation process. This involves Preliminary
+     Investigation, Summary Statistics and Visualisation techniques (histogram, scatterplots).
+     This also invloves cleaning the data to improve the quality. For example missing
+     values, invalid data etc. Another concept is to transform the raw data to make it suitable
+     for analysis.
+**** Analyze
+     This is the building of the data model. This involves different techniques based
+     on the suitability for the data.
+     - Classification
+     - Regression
+     - Clustering
+     - Association Analysis
+     - Graph Analysis
+**** Report
+     Report the insights gained from the ananysis. Visualisation is an important tool
+     for presentation. i.e Python, R, D3 etc
+**** Act
+     Determine what actions should be taken based on the insights gained. Is there additional
+     analysis needed? What data should be revisited?
+** Week 2: Foundations for Big Data Systems
+*** Distributed File System
+    A distributed file system is a physically distributed implementation of the
+    traditional file system, allowing users to manipulate, organize and share data
+    seamlessly, regardless of its actual location on the network.
+**** Key Facts
+     - Data can be replicated across the nodes of the system.
+     - This makes the system more scalable and fault tolerant.
+     - makes it harder to make changes over time
+*** Scalable computing
+*** Key tools Hadoop
+    Apache Hadoop is a framework that allows for distributed processing of large data
+    sets across clusters of computers using simple programing models.
+    It's designed to scale up from single server to multiple. Has error handling at
+    the application level.
+** Week 3: Big Data Modeling and Management System
+*** Data Modelling
+    The three components of a data model are:
+    - Structures
+    - Operations
+    - Constraints
+**** Structured
+**** Operations
+     This is the methods used to manipulate the data, such as Join, Union, Selection
+**** Constraints
+     Computing whether the statement is true or false with Types, Value or Structural
+     Constraints.
+*** Data Model Structure
+    - Structureed
+    - Semi Structured
+    - Unstructured
+*** NoSql
+**** Key-value databases
+     This is a storage paradigm designed for storing, retrieving and managing associative arrays,
+     aka a dictionary or hash table.
+     It is a value indexed by a key, there is no schema. It's the simplest NoSQL database. Known
+     for good performance and easily scales.
+***** Use For?
+      - Session info
+      - User Profiles
+      - Shopping Carts
+***** Not Use For?
+      - Relational data
+      - Multiple query operations
+      - Querying based on content of data
+      - Operations on sets of Data (multi-value)
+**** Document-orientated databases
+     Multifield indexable/queryable documents. Self describing hierarchical tree data structures
+     which can have list/arrays, maps and scalar values. Ususally JSON or BSON. An example is MongoDB.
+     Naming conventions in order are:
+     - Database
+     - Collection
+     - Document
+***** Use For?
+      - Event logs
+      - CMS
+      - Analytics
+      - eCommerce apps
+***** Don't Use For?
+      - Cross document transactions
+      - Queries that rely on fixed schema
+      - Relational data
+
+**** Wide column stores
+     A catagory of NoSQL databases that works well for storing enormous amounts of data that can be collected.
+     It's architecture uses persistent, sparse matrix, multi-dimensional mapping (row-value, column-value and
+     Timestamp) in a tabular format meant for massive scalability. Column family stores do not follow the relational
+     model and aren't optimized for joins.
+***** Use For?
+      - Event logs
+      - CMS
+      - Analytics
+      - messaging systems
+***** Don't Use For?
+      - complex Cross document transactions
+      - Queries that rely on fixed schema
+**** Graph databases
+     A graph is composed of two elements:
+     - Node - represents an entity (person, place, thing etc)
+     - Relationship (edge) - represents how two nodes are associated.
+     A graph database is an online database management system with CRUD operations on a graph data model.
+     Relationships take first priority in graph DB's. Edges have directional significance.
+     Is different from a RDMS which stores entities with relationships defined by
+     values of their properties, in graph DB's, the relationships are stored explicitly as database
+     objects.
+***** Use For?
+      - Social networks
+      - recomender systems
+      - Security Analysis
+      - Location based services
+***** Don't Use For?
+      - Operations on sets of data
+*** DataBase Use Cases
+*** JSON
+    JavaScript Object Notation is a standard data format that uses
+    human readable test to store data objects using key value pairs.
+    - example
+      {
+        "employees":
+        [
+          {"firstname": "john", "secondname":"kavanagh"},
+          {"firstname": "Frank", "secondname":"doe"}
+        ]
+      }
+
+    - key points
+      data is key value pairs
+      seperated by commas
+      curly braces hold objects
+      square brackets hold arrays
+      datatypes must be: string, number, JSON object, array, boolean and null
+
+*** MongoDB vs SQL
+**** Terminology
+    | RDBMS       | MongoDB               |
+    |-------------+-----------------------|
+    | Database    | Database              |
+    | Table       | Collection            |
+    | Tuple/Row   | Document              |
+    | Column      | Field                 |
+    | Table Join  | Embedded Document     |
+    | Primary Key | _id provided by mongo |
+**** Relational
+     - Data is defined by the design of the table
+     - Columns have names, data types and contraints
+     - Well defined Schema
+     - Rejects data that dosen't conform to schema
+**** MongoDB
+     - Data items in a document are key value pairs
+     - Db's/collections have no knowledge of meaning of data
+     - is Schemaless
+     - Allows any structure, can store unstructured data
+*** Mongo CRUD
+    - db - shows current database
+    - use databaseName switch/selects that database
+    - db.collectionName.insert( {"name": "Gavin"} ) - insert a document
+      There is also insertOne() or insertMany()
+    - db.collectionName.updateOne()
+    - ... .remove() - delete a document
+    - ... .drop() - delete a Database
+**** Find()
+     - db.collectionName.find( {"name": "gavin"} )
+      finds a document, the second argument is called the projection. It's the same
+      as SQL SELECT. It is the selection of what fields to return in a document.
+     - projection (The second argument)
+       - example
+         {"name": 1, "age": 1, "_id": 0}
+       The 1 means display the property from the result, the 0 means hide it.
+**** Comparators
+     - equality is implied by just the string, example:
+         db.collectionName.find({"userName": "Gavin"});
+     - $lt is the same as <
+     - $gt is the same as >
+     - $lte is the same as <=
+     - $gte is the same as >=
+     - $ne is the same as !=
+     - example with the find() command with $lte
+       db.collectionName.find({"userID": {$lte: 50}});
+**** AND and OR
+     multiple properties are automatically treated as having an &&
+     - example
+       find({"name": "Gavin", "age": 16});
+       This is the same in sudo code as find document WHERE Name == "Gavin" && Age == 16
+     OR however needs to be set as the single property of a wrapper object with the OR objects
+     nested inside an array
+     - example
+       find({$or: [ {"name": "Gavin"}, {"name": "Lauren"} ] })
+**** formatter functions
+     functions can be chained to format commands like find()
+     - .pretty() formats the output to readable format
+     - .sort()
+     - .limit() takes an argument to set the max amount of documents to display
+**** Array Queries
+     - Use "." syntax to access nested propertys in collections
+     - equality is the same as before but the array is the value, so checking for array
+       equality.
+       IMPORTANT, equality includes the order of the array elements.
+       - example
+         find({"countries": ["USA", "UK"]})
+     - $all
+       is the same as the equality for arrays but this disregards the order of the
+       items in the array. The syntax is the same as usuall, a wrapper object with
+       the content as the property and the $all as the property name.
+       - example
+         find({countries:{$all: ["USA", "UK"]}})
+     - $in
+       Pretty much the same as $all but for just if a single value is in the array
+       - example
+         find({countries:{$in: ["USA", "UK"]}})
+     - Querying arrays with objects?
+       This is just the same but the "." syntax is required
+*** Mongo Agregation Pipeline
+    Aggregation operations group values from multiple documents together and
+    can perform operations on the grouped data.
+**** The three Agregation methods are:
+***** Single purpose aggregation
+     - count()
+       counts the number of documents, can be chained onto a collection or any command
+       that returns collections
+       - example
+         db.movies.find({"year": 2006}).count()
+       returns the number of movies matching the criteria
+     - distinct()
+       Distinct returns all the values with no duplicates
+***** Aggregation pipeline
+      The same as piping in linux terminal, "Modeled on the concept of data processing
+      pipelines".
+      - $match
+        Filters the document stream to only allow matching documents based on input condition
+        to pass to the next function.
+      - $group
+        Groups input documents by a specified identifier expression, like an equality.
+        Then applies an accumulator expression (second argument) to each group.
+        Outputs a new document with one document per group, the document will only
+        contain the identifier field and the accumulated fields.
+        - the group syntax MUST have an "_id" property.
+        - for aggregation to all fields, use null for the _id
+      - example
+        db.orders.aggregate( [
+                              { $match: { status: "A" } },
+                              { $group: { _id: "$cust_id", total: { $sum: "$amount" }}}
+        ])
+***** Map-reduce
+      A MapReduce program is composed of a map procedure (or method), which performs filtering and
+      sorting (such as sorting students by first name into queues, one queue for each name, like a
+      bunch of Gavins, Jacks etc..), and a reduce method, which performs a summary operation
+      (such as counting the number of students in each queue, yielding name frequencies).
+****** Stages of MapReduce
+       1) Query to select data, this is only needed if the function is not being perfomed on all data.
+       2) Map function returns new collection with a key and the values of the selected fields
+       3) The Reduce function is some form of accumulator function to give a total of the fields
+****** Example
+       - Create a map function. First arg is the group by key, second arg is the values. This can
+         also be though of as "what do you want an array of?", which means it can have an int of 1
+         passed in which is used to count the amount of documents. This is handy when there is no
+         key to be gathering the values of in each document, like building a price array for each
+         transaction user document.
+       var mapFunction1 = function() {
+                       emit(this.cust_id, this.price);
+                   };
+       - Create reducer function to in this case "sum" all the values. Second arg is the array
+         from the map function.
+         var reduceFunction1 = function(keyCustId, valuesPrices) {
+                          return Array.sum(valuesPrices);
+                      };
+
+       - Perform the operation. The { out: "..."} is the name the new collection the results will be placed in.
+         db.orders.mapReduce(
+                     mapFunction1,
+                     reduceFunction1,
+                     {
+                       query: { "price": {gt: 500}}, // optional query to initial data selection
+                       out: "map_reduce_example"
+                     }
+                   )
+
+*** Mongo MapReduce vs aggregation pipeline
+    - For most aggregation operations, the aggregation pipeline provides better performance and a
+      more coherant interface. However map reduce provides some flexability that aggregation pipeline
+      does not.
+    - Map reduce has high overhead, with operations on even small datasets taking 100s of miliseconds,
+      making aggregation pipeline likely to be faster on small datasets.
+    - Map reduce is likely to be faster on large datasets as as its operations can be run in parallel.
+    - Because map reduce uses javascript functions, it has full access to the language which aggregation
+      pipeline does not, potentially giving map reduce more power/ability.
+*** Retrieve Mongo data from python
+    - example
+      from pymongo import MongoClient
+
+      client = MongoClient()
+      restaurants =client.exam. restaurants
+
+      for restaurant in restaurants.find( { “borough”:"Manhattan" } ):
+          print restaurant[‘borough’] + ” ” + restaurant[‘name ‘]
+*** Design a mongoDB data model for a scenario and compare with SQL approach
+* Subjects in past papers
+** Week 10
+   - Data Scaling
+   - Apache Hadoop
+   - Apache Spark
+** Week 7/8
+*** Supervised learning
+     Supervised learning is when you have input variable X and an ouput variable Y and
+     you use an algorithm to learn the mapping function from the input to the output.
+     y = f(x)
+     The goal is to approximate the function so well that when given new input the
+     function is able to predict the output variables.
+     Supervised learning can be grouped into classification and regression problems.
+*** Unsupervised learning
+    Unspervised learning is when you have input variable x and no corisponding output.
+    The goal is to model the underlying structure of the data in order to learn more
+    about the data.
+    There are no correct answers, the algorithms are left alone to discover and present
+    structures and patterns in the data.
+    Unsupervised learning problems can be grouped into Clustering and Association problems.
+
+   - Machine Learning Algorithms
+** Week 3
+*** Mongo import command
+    mongoimport --db exam --collection restaurants --drop -file bd-data.json
+*** Mongo CRUD ops
+     db.restaurants.find({"cuisne": "hamburgers", "grades.grade": {$all: ['A', 'B', 'Z']}},
+     {"name":1, "grade":1, "_id":0}).pretty();
+   - Mongo aggregation pipeline
+   - Mongo Map-reduce
+
+*** Mongo python
+**** Example Code
+     from pymongo import MongoClient
+     client = MongoClient()
+     companies =client.exam. companies
+     for company in companies.find( {"tag_list" : {$in: ["wiki", "media‐industry"},
+     "total_money_raise": {$gt: 500000}  ):
+         print company [‘name’] + ” ” + company [‘homepage_url‘] + “ “ + company
+         [‘offices.country_code’]
+**** Code Breakdown
+    - import the MongoDB python library module
+    - Create a reference variable to the running mongod instance, it will connect to default host/port
+    - create a reference variable and assign it to the companies collection from exam database.
+    - This script will find all the companies with ‘tag_list’ including ‘wiki’ or ‘media‐inductry’, and
+      ‘total_money_raise’ greater than 500000, and print out the ‘name’, ‘homepage_id’ and
+      ‘country_code’ of the companies.
+
+*** Design mongoDB data models and contrast with RDBMS
+** Week 5
+*** Dimentionality Reduction
+    Dimentionality Reduction refers to the process of converting a data set that has vast
+    dimentions into data with lesser dimensions ensuring that it conveys similar information
+    correctly.
+    Dimensions of data set N can be reduced to K (K < N). The K dimensions can be a comination
+    of dimensions or new dimensions that represent existing multiple ones.
+    The benefits are:
+    - Aids data compression and storage space reduction
+    - Improved performance
+    - Takes care of multi-colliniarity improving model performance
+    - removes redundent features
+    Examples:
+    - Dropping variables with too many missing values
+    - Dropping variables with low variance (similar shit)
+    - Use of methods such as Correlations, Decision Trees
